@@ -1,3 +1,4 @@
+<script src='https://unpkg.com/panzoom@9.4.0/dist/panzoom.min.js'></script>
 <script type="module">
     import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
     mermaid.initialize({ startOnLoad: false });
@@ -6,6 +7,9 @@
         mermaid.run({querySelector: "code.lang-mermaid, code.language-mermaid"})
         for (const elem of document.getElementsByClassName("lang-mermaid")) {
             elem.parentElement.style.setProperty("background", 'transparent')
+        }
+        for (const elem of document.querySelectorAll("code.language-mermaid > svg")) {
+            panzoom(elem)
         }
     }
 
@@ -21,7 +25,6 @@
 
     // Setup additional render as backup to the previous Prism hook
     window.addEventListener("load", () => setTimeout(renderMermaid, 100));
-
 
     window.addEventListener("popstate", () => setTimeout(renderMermaid, 0));
 </script>
