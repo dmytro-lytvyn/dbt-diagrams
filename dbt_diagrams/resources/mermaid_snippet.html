@@ -9,7 +9,10 @@
             elem.parentElement.style.setProperty("background", 'transparent')
         }
         for (const elem of document.querySelectorAll("code.language-mermaid > svg")) {
-            panzoom(elem)
+            // Documentation: https://github.com/anvaka/panzoom
+            panzoom(elem, {
+                zoomSpeed: 0.5
+            })
         }
     }
 
